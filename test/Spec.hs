@@ -27,24 +27,24 @@ lists = do
     (property (\xs -> Impl.listToMaybe xs == listToMaybe (xs :: [Integer])))
   it'
     "Sum a list"
-    Impl.sum
-    (property (\xs -> Impl.sum xs == sum (xs :: [Integer])))
+    Impl.sum'
+    (property (\xs -> Impl.sum' xs == sum (xs :: [Integer])))
   it'
     "Reverse a list"
-    Impl.sum
-    (property (\xs -> Impl.reverse xs == reverse (xs :: [Integer])))
+    Impl.reverse'
+    (property (\xs -> Impl.reverse' xs == reverse (xs :: [Integer])))
   it'
     "Right-fold: sum"
-    Impl.foldr
-    (property (\xs -> Impl.foldr (+) 0 xs == foldr (+) 0 (xs :: [Integer])))
+    Impl.foldr'
+    (property (\xs -> Impl.foldr' (+) 0 xs == foldr (+) 0 (xs :: [Integer])))
   it'
     "Right-fold: recons"
-    Impl.foldr
-    (property (\xs -> Impl.foldr (:) [] xs == foldr (:) [] (xs :: [Integer])))
+    Impl.foldr'
+    (property (\xs -> Impl.foldr' (:) [] xs == foldr (:) [] (xs :: [Integer])))
   it'
     "Left-fold: reverse"
-    Impl.foldl
-    (property (\xs -> Impl.foldl (flip (:)) [] xs == foldl (flip (:)) [] (xs :: [Integer])))
+    Impl.foldl'
+    (property (\xs -> Impl.foldl' (flip (:)) [] xs == foldl (flip (:)) [] (xs :: [Integer])))
 
 it' :: (Example a1, Arg a1 ~ ()) => String -> a2 -> a1 -> SpecM () ()
 it' title f inner = do
