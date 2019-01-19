@@ -8,16 +8,21 @@ import Lib
 -- data List a = Nil | Cons a (List a)
 
 listToMaybe :: [a] -> Maybe a
-listToMaybe = incomplete
+listToMaybe [] = Nothing
+listToMaybe (x:_) = Just x
 
-sum :: [Integer] -> Integer
-sum = incomplete
+sum' :: [Integer] -> Integer
+sum' [] = 0
+sum' (x:xs) = x + sum xs
 
-reverse :: [Integer] -> [Integer]
-reverse = incomplete
+reverse' :: [Integer] -> [Integer]
+reverse' [] = []
+reverse' (x:xs) = reverse xs ++ [x]
 
-foldr :: (e -> acc -> acc) -> acc -> [e] -> acc
-foldr = incomplete
+foldr' :: (e -> acc -> acc) -> acc -> [e] -> acc
+foldr' _ n [] = n
+foldr' f n (x:xs) = f x (foldr' f n xs)
 
-foldl :: (acc -> e -> acc) -> acc -> [e] -> acc
-foldl = incomplete
+foldl' :: (acc -> e -> acc) -> acc -> [e] -> acc
+foldl' _ n [] = n
+foldl' f n (x:xs) = foldl' f (f n x) xs
